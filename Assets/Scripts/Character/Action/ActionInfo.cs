@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// 角色的一个动作的信息
@@ -13,7 +14,7 @@
 /// 比如镜头的Tween，其实是一个(float normalized)=>(Vector3 offset, float fieldOfView)
 /// </summary>
 [Serializable]
-public struct ActionInfo
+public class ActionInfo
 {
     /// <summary>
     /// 一个动作的id，每个动作都有一个id，必须是唯一的，同名的action会互相覆盖
@@ -35,25 +36,25 @@ public struct ActionInfo
     /// <summary>
     /// 这个动作的CancelTag，他可以Cancel掉哪些动作
     /// </summary>
-    public CancelTag[] cancelTag;
+    public List<CancelTag> cancelTag = new();
 
     /// <summary>
     /// 这个动作可以被Cancel的信息
     /// 这里是长久存在的BeCancelledTag
     /// </summary>
-    public BeCancelledTag[] beCancelledTag;
+    public List<BeCancelledTag> beCancelledTag = new();
 
     /// <summary>
     /// 临时的被Cancel信息
     /// 这个是需要临时开启和关闭的信息
     /// </summary>
-    public TempBeCancelledTag[] tempBeCancelledTag;
+    public List<TempBeCancelledTag> tempBeCancelledTag = new();
 
     /// <summary>
     /// 允许的操作，一个动作未必只有一个方式操作出来
     /// 比如街霸6的春丽百裂腿，236脚和连续按脚都能发
     /// </summary>
-    public ActionCommand[] commands;
+    public List<ActionCommand> commands = new();
 
     /// <summary>
     /// 这里是保持移动方向的倍率，根据游戏不同、精度不同所需要的参数不同
@@ -66,7 +67,7 @@ public struct ActionInfo
     /// 如果美术把起跳到最高点做在一个动作了，也问题不大，靠这个来做
     /// 如果策划填表填错了，2段重叠了，那么就取速度慢的那段
     /// </summary>
-    public MoveInputAcceptance[] inputAcceptance;
+    public List<MoveInputAcceptance> inputAcceptance=new();
 
     /// <summary>
     /// 下一个动作的id
@@ -108,12 +109,12 @@ public struct ActionInfo
     /// <summary>
     /// 在这个动作期间存在的攻击信息
     /// </summary>
-    public AttackInfo[] attacks;
+    public List<AttackInfo> attacks=new();
 
     /// <summary>
     /// 每一段攻击的信息
     /// </summary>
-    public AttackBoxTurnOnInfo[] attackPhase;
+    public List<AttackBoxTurnOnInfo> attackPhase=new();
 
     /// <summary>
     /// 受击框开关信息，
@@ -121,7 +122,7 @@ public struct ActionInfo
     /// 首先会看受击框属于哪个信息的，如果受击框同时被多个重叠的阶段开启
     /// 那就真的听天由命了（这就是策划配表问题了，只能通过编辑器ui解决）
     /// </summary>
-    public BeHitBoxTurnOnInfo[] defensePhase;
+    public List<BeHitBoxTurnOnInfo> defensePhase=new();
 
     /// <summary>
     /// 指向Methods/RootMotionMethods下的RootMotion函数
@@ -149,11 +150,12 @@ public struct ActionInfo
 
 /// <summary>
 /// 读取json用的
+/// #从struct修改为class
 /// </summary>
 [Serializable]
-public struct ActionInfoContainer
+public class ActionInfoContainer
 {
-    public ActionInfo[] data;
+    public List<ActionInfo> data=new();
 }
 
 /// <summary>

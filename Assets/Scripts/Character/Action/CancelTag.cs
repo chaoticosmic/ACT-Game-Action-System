@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// CancelTag和BeCancelledTag是一对用于动作切换的核心数据
@@ -6,7 +7,7 @@
 /// 开启BeCancelledTag，让CancelTag对应的动作有可能在这段时间内可以Cancel当前动作
 /// </summary>
 [Serializable]
-public struct CancelTag
+public class CancelTag
 {
     /// <summary>
     /// 这个tag的字符串，可以理解为id
@@ -30,7 +31,7 @@ public struct CancelTag
 }
 
 [Serializable]
-public struct BeCancelledTag
+public class BeCancelledTag
 {
     /// <summary>
     /// 时间段
@@ -40,7 +41,7 @@ public struct BeCancelledTag
     /// <summary>
     /// 可以Cancel的CancelTag
     /// </summary>
-    public string[] cancelTag;
+    public List<string> cancelTag=new();
 
     /// <summary>
     /// 动画融合出去的时间
@@ -70,7 +71,7 @@ public struct BeCancelledTag
 }
 
 [Serializable]
-public struct TempBeCancelledTag
+public class TempBeCancelledTag
 {
     /// <summary>
     /// 因为需要被索引，所以需要一个id
@@ -86,7 +87,7 @@ public struct TempBeCancelledTag
     /// <summary>
     /// 可以Cancel的CancelTag
     /// </summary>
-    public string[] cancelTag;
+    public List<string> cancelTag;
 
     /// <summary>
     /// 动画融合出去的时间
