@@ -20,8 +20,9 @@ public enum ViewType
     Action = 1 << 3,
     Tool = 1 << 4,
     Cancel = 1 << 5,
-    Other = 1 << 6,
-    Frame = 1 << 7,
+    BeCancel = 1 << 6,
+    Other = 1 << 7,
+    Frame = 1 << 8,
 }
 
 /// <summary>
@@ -32,6 +33,7 @@ public partial class ActionEditorSetting
 {
     public int stateSelectIndex = -1;
     public int cancelSelectIndex = -1;
+    public int beCancelSelectIndex = -1;
     public int attackRangeSelectIndex = -1;
     public int bodyRangeSelectIndex = -1;
     public int actionSelectIndex = -1;
@@ -92,8 +94,10 @@ public partial class ActionEditorSetting
         [NonSerialized] public readonly StateListView stateListView;
         [NonSerialized] public readonly StateSetView stateSetView;
         [NonSerialized] public readonly ToolView toolView;
-        [NonSerialized] public readonly CancelTagView cancelTagView;
+        [NonSerialized] public readonly CancelTagListView cancelTagListView;
         [NonSerialized] public readonly CancelTagSetView cancelTagSetView;
+        [NonSerialized] public readonly BeCancelledTagListView beCancelTagListView;
+        [NonSerialized] public readonly BeCancelledTagSetView beCancelTagSetView;
         
         
         public List<IView> views { get; private set; }
@@ -114,6 +118,8 @@ public partial class ActionEditorSetting
         private readonly float toolViewRectWidth = 200f;
         private readonly float cancelTagViewRectWidth = 200f;
         private readonly float cancelTagSetViewRectWidth = 200f;
+        private readonly float beCancelTagListViewRectWidth = 200f;
+        private readonly float beCancelTagSetViewRectWidth = 200f;
         
         #endregion style
         
@@ -176,8 +182,10 @@ public partial class ActionEditorSetting
             stateListView = CreateView<StateListView>();
             stateSetView = CreateView<StateSetView>();
             toolView = CreateView<ToolView>();
-            cancelTagView = CreateView<CancelTagView>();
+            cancelTagListView = CreateView<CancelTagListView>();
             cancelTagSetView = CreateView<CancelTagSetView>();
+            beCancelTagListView = CreateView<BeCancelledTagListView>();
+            beCancelTagSetView = CreateView<BeCancelledTagSetView>();
 
         }
         
@@ -385,6 +393,26 @@ public partial class ActionEditorSetting
                 }
             }
         }
+        
+        public int beCancelSelectIndex
+        {
+            get
+            {
+                CheckSelectIndex(ref setting.beCancelSelectIndex, currentBeCancels);
+                return setting.beCancelSelectIndex;
+            }
+
+            set
+            {
+                int oldIndex = setting.beCancelSelectIndex;
+                setting.beCancelSelectIndex = value;
+                CheckSelectIndex(ref setting.beCancelSelectIndex, currentBeCancels);
+                if (oldIndex != value && oldIndex != setting.beCancelSelectIndex)
+                {//当前帧发生改变
+                    actionMachineDirty = true;
+                }
+            }
+        }
         public int stateSelectIndex
         {
             get
@@ -425,6 +453,7 @@ public partial class ActionEditorSetting
 
 
         public CancelTag currentCancelTag => GetSelectItem(cancelSelectIndex, currentCancels);
+        public BeCancelledTag currentBeCancelTag => GetSelectItem(beCancelSelectIndex, currentBeCancels);
         public ActionInfo currentState => GetSelectItem(stateSelectIndex, currentStates);
         public FrameInfo currentFrame => GetSelectItem(frameSelectIndex, currentFrames);
         
@@ -581,6 +610,8 @@ public partial class ActionEditorSetting
             Rect stateSetViewRect = Rect.zero;
             Rect cancelTagViewRect = Rect.zero;
             Rect cancelTagSetViewRect = Rect.zero;
+            Rect beCancelTagListViewRect = Rect.zero;
+            Rect beCancelTagSetViewRect = Rect.zero;
             
             menuViewRect = new Rect(
                 startPosX + space,
@@ -632,7 +663,7 @@ public partial class ActionEditorSetting
             
             if ((setting.showView & ViewType.Cancel) != 0)
             {
-                if (!cancelTagView.isPop)
+                if (!cancelTagListView.isPop)
                 {
                     cancelTagViewRect = new Rect(
                         nextPosX + space,
@@ -656,6 +687,32 @@ public partial class ActionEditorSetting
 
             }
             
+            
+            if ((setting.showView & ViewType.BeCancel) != 0)
+            {
+                if (!beCancelTagListView.isPop)
+                {
+                    beCancelTagListViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        beCancelTagListViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += beCancelTagListViewRectWidth;
+                    hasNextView = true;
+                }
+                
+                if (!beCancelTagSetView.isPop)
+                {
+                    beCancelTagSetViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        beCancelTagSetViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += beCancelTagSetViewRectWidth;
+                    hasNextView = true;
+                }
+
+            }
             
             
             #endregion calc size
@@ -688,14 +745,28 @@ public partial class ActionEditorSetting
                 
                 if ((setting.showView & ViewType.Cancel) != 0)
                 {
-                    if (!cancelTagView.isPop)
+                    if (!cancelTagListView.isPop)
                     {
-                        cancelTagView.Draw(cancelTagViewRect);
+                        cancelTagListView.Draw(cancelTagViewRect);
                         
                     }
                     if (!cancelTagSetView.isPop)
                     {
                         cancelTagSetView.Draw(cancelTagSetViewRect);
+                        
+                    }
+                }
+                
+                if ((setting.showView & ViewType.BeCancel) != 0)
+                {
+                    if (!beCancelTagListView.isPop)
+                    {
+                        beCancelTagListView.Draw(beCancelTagListViewRect);
+                        
+                    }
+                    if (!beCancelTagSetView.isPop)
+                    {
+                        beCancelTagSetView.Draw(beCancelTagSetViewRect);
                         
                     }
                 }
