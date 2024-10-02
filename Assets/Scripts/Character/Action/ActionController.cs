@@ -380,7 +380,7 @@ public class ActionController : MonoBehaviour
 
     public int IndexOfAttack(int attackPhase)
     {
-        for (int i = 0; i < CurrentAction.attacks.Length; i++)
+        for (int i = 0; i < CurrentAction.attacks.Count; i++)
         {
             if (CurrentAction.attacks[i].phase == attackPhase)
                 return i;

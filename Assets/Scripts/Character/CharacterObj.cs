@@ -258,7 +258,7 @@ public class CharacterObj : MonoBehaviour
                 //就不管攻击框了，本来应该先判断攻击框的，其实也无所谓的
                 attackBox = touch.Key;
                 targetBox = best;
-                if (boxInfo.attackPhase >= 0 && boxInfo.attackPhase < action.CurrentAction.attacks.Length)
+                if (boxInfo.attackPhase >= 0 && boxInfo.attackPhase < action.CurrentAction.attacks.Count)
                     attackPhase = action.CurrentAction.attacks[boxInfo.attackPhase];
                 return true;
             }

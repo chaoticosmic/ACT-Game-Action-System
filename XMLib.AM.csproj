@@ -12,11 +12,11 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5e12942f-5544-0b99-f5a6-57d59ed6c05a}</ProjectGuid>
+    <ProjectGuid>{bfc24e6a-9661-e1cc-f136-d3d01cee1ee7}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>XMLib.AM</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseDirectory>.</BaseDirectory>
@@ -25,7 +25,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>Temp\Bin\Debug\Assembly-CSharp\</OutputPath>
+    <OutputPath>Temp\Bin\Debug\XMLib.AM\</OutputPath>
     <DefineConstants>UNITY_2022_3_15;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,79 +45,24 @@
     <Analyzer Include="E:\Unity\2022.3.15f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Character\Action\AttackBoxTurnOnInfo.cs" />
-     <Compile Include="Assets\Scripts\Character\Action\FrameInfo.cs" />
-     <Compile Include="Assets\Scripts\Character\ForceMove.cs" />
-     <Compile Include="Assets\Scripts\Character\Action\ActionController.cs" />
-     <Compile Include="Assets\Scripts\GameMain.cs" />
-     <Compile Include="Assets\Scripts\Character\MoveInfo.cs" />
-     <Compile Include="Assets\Scripts\Character\Action\BeHitBoxTurnOnInfo.cs" />
-     <Compile Include="Assets\Scripts\Character\Fight\HitRecord.cs" />
-     <Compile Include="Assets\AE\Runtime\Utility\DataUtility.cs" />
-     <Compile Include="Assets\Scripts\Character\CharacterObj.cs" />
-     <Compile Include="Assets\Scripts\Character\Action\ActionCommand.cs" />
-     <Compile Include="Assets\Scripts\Character\Action\PercentageRange.cs" />
-     <Compile Include="Assets\Scripts\Character\Boxes\AttackHitBox.cs" />
-     <Compile Include="Assets\Scripts\Character\Action\AttackInfo.cs" />
-     <Compile Include="Assets\Scripts\Character\GameData.cs" />
-     <Compile Include="Assets\Scripts\Character\Boxes\BeHitBox.cs" />
-     <Compile Include="Assets\Scripts\Character\Action\ActionChangeInfo.cs" />
-     <Compile Include="Assets\Scripts\Character\Action\PreorderActionInfo.cs" />
-     <Compile Include="Assets\AE\Runtime\ActionMachineHelper.cs" />
-     <Compile Include="Assets\Scripts\Character\InputToCommand.cs" />
-     <Compile Include="Assets\Scripts\Methods\RootMotionMethod.cs" />
-     <Compile Include="Assets\AE\Runtime\Test\ActionControllerTest.cs" />
-     <Compile Include="Assets\Scripts\Methods\PickActionMethod.cs" />
-     <Compile Include="Assets\Scripts\Methods\ForceMoveMethod.cs" />
-     <Compile Include="Assets\Scripts\Methods\ScriptMethodInfo.cs" />
-     <Compile Include="Assets\Scripts\Character\Action\CancelTag.cs" />
-     <Compile Include="Assets\Scripts\Character\Action\ActionInfo.cs" />
-     <Folder Include="Assets" />
-     <Folder Include="Assets\Arts\Simple city plain\Material &amp; Texture" />
-     <Folder Include="Assets\Scripts\Character\Boxes" />
-     <Folder Include="Assets\Arts\FightingMotionsVolume1\FBX\nomove" />
-     <Folder Include="Assets\Arts\AcquireChan\Motions" />
-     <Folder Include="Assets\AE" />
-     <Folder Include="Assets\Arts\FightingMotionsVolume1\Prefabs" />
-     <Folder Include="Assets\AE\Runtime\Test" />
-     <Folder Include="Assets\Arts\AcquireChan" />
-     <None Include="Assets\Arts\AcquireChan\Models\Shaders\imagine_chara_parts_body.shader" />
-     <Folder Include="Assets\Arts\AcquireChan\Models" />
-     <None Include="Assets\Resources\GameData\Action.json" />
-     <Folder Include="Assets\Arts\Simple city plain\Material &amp; Texture\Material mesh" />
-     <Folder Include="Assets\AE\Runtime" />
-     <Folder Include="Assets\Scripts\Character\Action" />
-     <Folder Include="Assets\Arts\Fantasy Skybox FREE\Cubemaps" />
-     <None Include="Assets\Arts\AcquireChan\Models\Shaders\imagine_chara.shader" />
-     <Folder Include="Assets\Resources\GameData" />
-     <Folder Include="Assets\Scripts\Character" />
-     <Folder Include="Assets\Arts\FightingMotionsVolume1\FBX" />
-     <Folder Include="Assets\Scripts\Methods" />
-     <Folder Include="Assets\Arts\FightingMotionsVolume1\Textures" />
-     <Folder Include="Assets\Arts\Simple city plain\Material &amp; Texture\color_windows" />
-     <None Include="Assets\Arts\AcquireChan\Models\Shaders\imagine_chara_parts_hair.shader" />
-     <Folder Include="Assets\Arts\Simple city plain" />
-     <Folder Include="Assets\Arts\Simple city plain\Mesh" />
-     <Folder Include="Assets\Arts\Fantasy Skybox FREE\Cubemaps\Classic" />
-     <Folder Include="Assets\Arts" />
-     <Folder Include="Assets\Arts\AcquireChan\Models\Materials" />
-     <Folder Include="Assets\Arts\FightingMotionsVolume1" />
-     <None Include="Assets\Arts\AcquireChan\Models\Shaders\imagine_chara_parts_face.shader" />
-     <Folder Include="Assets\Arts\AcquireChan\Models\Shaders" />
-     <Folder Include="Assets\Arts\Simple city plain\Mesh\Materials" />
-     <Folder Include="Assets\Arts\Fantasy Skybox FREE" />
-     <Folder Include="Assets\Arts\Simple city plain\Prefabs" />
-     <Folder Include="Assets\Resources" />
-     <Folder Include="Assets\Arts\AcquireChan\Prefabs" />
-     <Folder Include="Assets\Arts\FightingMotionsVolume1\Animator" />
-     <Folder Include="Assets\Arts\AcquireChan\Models\Textures" />
-     <Folder Include="Assets\Arts\Animator" />
-     <Folder Include="Assets\Scenes" />
-     <Folder Include="Assets\Arts\FightingMotionsVolume1\Materials" />
-     <Folder Include="Assets\AE\Runtime\Utility" />
-     <Folder Include="Assets\Scripts" />
-     <Folder Include="Assets\Scripts\Character\Fight" />
-     <Folder Include="Assets\Arts\Simple city plain\Material &amp; Texture\Colors_buildings" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\CompareUtility.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\ActionNode.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\ActionMachineHelper.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\Test\ActionMachineTest.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\Data\RangeConfig.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\IActionMachine.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\Data\FrameConfig.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\Data\ActionConfigAttribute.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\CompareType.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\ActionMachine.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\Data\StateConfig.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\IActionHandler.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\IHoldFrames.cs" />
+     <Compile Include="Assets\Plugins\XMLib.AM\Runtime\Data\MachineConfig.cs" />
+     <Folder Include="Assets\Plugins\XMLib.AM\Runtime\Data" />
+     <None Include="Assets\Plugins\XMLib.AM\Runtime\XMLib.AM.asmdef" />
+     <Folder Include="Assets\Plugins\XMLib.AM\Runtime\Test" />
+     <Folder Include="Assets\Plugins\XMLib.AM\Runtime" />
      <Reference Include="UnityEngine">
      <HintPath>E:\Unity\2022.3.15f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
@@ -367,11 +312,20 @@
      <Reference Include="UnityEditor.UnityConnectModule">
      <HintPath>E:\Unity\2022.3.15f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
      </Reference>
+     <Reference Include="UnityEditor.Graphs">
+     <HintPath>E:\Unity\2022.3.15f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+     </Reference>
+     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+     <HintPath>E:\Unity\2022.3.15f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+     </Reference>
      <Reference Include="Newtonsoft.Json">
      <HintPath>E:\Code\Learn\ACT-Game-Action-System\Assets\Plugins\XMLib.ThirdParty\Runtime\Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="SevenZip">
      <HintPath>E:\Code\Learn\ACT-Game-Action-System\Assets\Plugins\XMLib.ThirdParty\Runtime\SevenZip.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.YamlDotNet">
+     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
      </Reference>
      <Reference Include="CloudBase">
      <HintPath>E:\Code\Learn\ACT-Game-Action-System\Assets\Plugins\XMLib.ThirdParty\Runtime\CloudBase.dll</HintPath>
@@ -385,11 +339,32 @@
      <Reference Include="ReportGeneratorMerged">
      <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\PackageCache\com.unity.testtools.codecoverage@1.2.4\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.Plastic.Antlr3.Runtime">
+     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+     </Reference>
+     <Reference Include="unityplastic">
+     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Plastic.Newtonsoft.Json">
+     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+     </Reference>
+     <Reference Include="log4netPlastic">
+     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\PackageCache\com.unity.collab-proxy@2.2.0\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.IonicZip">
+     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
      <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="Google.Protobuf">
      <HintPath>E:\Code\Learn\ACT-Game-Action-System\Assets\Plugins\XMLib.ThirdParty\Runtime\Google.Protobuf.dll</HintPath>
+     </Reference>
+     <Reference Include="EPPlus">
+     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Assets\Plugins\XMLib.ThirdParty\Editor\EPPlus.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.VisualScripting.TextureAssets">
+     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\PackageCache\com.unity.visualscripting@1.9.1\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
      </Reference>
      <Reference Include="FlatBuffers">
      <HintPath>E:\Code\Learn\ACT-Game-Action-System\Assets\Plugins\XMLib.ThirdParty\Runtime\FlatBuffers.dll</HintPath>
@@ -763,104 +738,17 @@
      <Reference Include="System.Xml.Serialization">
      <HintPath>E:\Unity\2022.3.15f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.EditorCoroutines.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.AI.Navigation">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.PlasticSCM.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Timeline.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Shared.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualStudio.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="UnityEditor.UI">
      <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.VisualScripting.Core">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
-     </Reference>
      <Reference Include="UnityEngine.UI">
      <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Core.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Rider.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Flow">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.Flow.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Timeline">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.AI.Navigation.Updater">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.State.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TextMeshPro">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.TextMeshPro.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.AI.Navigation.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VisualScripting.State">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.VSCode.Editor">
-     <HintPath>E:\Code\Learn\ACT-Game-Action-System\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
      </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="XMLib.Common.csproj">
       <Project>{f7fda1d8-6acf-880a-202e-41571e215b99}</Project>
       <Name>XMLib.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="XMLib.AM.Editor.csproj">
-      <Project>{9feffdb8-ee6e-301e-d630-64fae6ea873f}</Project>
-      <Name>XMLib.AM.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="XMLib.AM.csproj">
-      <Project>{bfc24e6a-9661-e1cc-f136-d3d01cee1ee7}</Project>
-      <Name>XMLib.AM</Name>
-    </ProjectReference>
-    <ProjectReference Include="XMLib.Common.Editor.csproj">
-      <Project>{0555b955-31f2-700c-ff21-0788c1da2c61}</Project>
-      <Name>XMLib.Common.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
