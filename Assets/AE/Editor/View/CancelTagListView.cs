@@ -4,7 +4,7 @@ using UnityEngine;
 using XMLib;
 
 
-public class CancelTagView : IDataView
+public class CancelTagListView : IDataView
 {
     public override string title => "取消列表";
     

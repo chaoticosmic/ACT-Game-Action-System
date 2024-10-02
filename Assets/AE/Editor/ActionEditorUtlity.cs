@@ -66,4 +66,18 @@
                 selected = !selected;
             }
         }
+        
+        public static void BeCancelTagDrawer(int index, ref bool selected, BeCancelledTag obj) 
+        {
+            if (GUILayout.Button($"{index}", selected ? AEStyles.item_head_select : AEStyles.item_head_normal, GUILayout.ExpandHeight(true), GUILayout.Width(15)))
+            {
+                GUI.FocusControl(null);
+                selected = !selected;
+            }
+            if (GUILayout.Button($"{obj.cancelTag.Count}", selected ? AEStyles.item_body_select : AEStyles.item_body_normal, GUILayout.Height(30f), GUILayout.ExpandWidth(true)))
+            {
+                GUI.FocusControl(null);
+                selected = !selected;
+            }
+        }
     }

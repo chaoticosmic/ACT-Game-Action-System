@@ -55,12 +55,13 @@
      <Compile Include="Assets\AE\Editor\IDataView.cs" />
      <Compile Include="Assets\AE\Editor\View\CancelTagSetView.cs" />
      <Compile Include="Assets\AE\Editor\View\MenuView.cs" />
+     <Compile Include="Assets\AE\Editor\View\CancelTagListView.cs" />
      <Compile Include="Assets\AE\Editor\View\ActionListView.cs" />
      <Compile Include="Assets\AE\Editor\ActionEditorUtlity.cs" />
+     <Compile Include="Assets\AE\Editor\View\BeCancelledTagSetView.cs" />
      <Compile Include="Assets\AE\Editor\View\StateListView.cs" />
      <Compile Include="Assets\AE\Editor\View\ToolView.cs" />
      <Compile Include="Assets\AE\Editor\ActionControllerTestEditor.cs" />
-     <Compile Include="Assets\AE\Editor\View\CancelTagView.cs" />
      <Folder Include="Assets\AE\Editor\View" />
      <Folder Include="Assets\AE\Editor" />
      <Reference Include="UnityEngine">
