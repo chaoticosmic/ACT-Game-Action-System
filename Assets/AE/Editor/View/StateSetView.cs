@@ -27,6 +27,7 @@ public class StateSetView : IDataView
         config.autoNextActionId = EditorGUILayoutEx.DrawObject("自动下一个id", config.autoNextActionId);
         config.keepPlayingAnim = EditorGUILayoutEx.DrawObject("保持播放", config.keepPlayingAnim);
         config.autoTerminate = EditorGUILayoutEx.DrawObject("自动终结", config.autoTerminate);
+        config.rootMotionTween = EditorGUILayoutEx.DrawObject("rootMotion", config.rootMotionTween);
         config.priority = EditorGUILayoutEx.DrawObject("优先级", config.priority);
         config.flip = EditorGUILayoutEx.DrawObject("翻转", config.flip);
 

@@ -143,7 +143,7 @@ public class InputToCommand : MonoBehaviour
     {
         //这里的顺序非常重要，所以一定要for而不能foreach，尽管C#尽可能保证了顺序执行，但谁知道呢？
         double lastStamp = _timeStamp - Mathf.Max(action.validInSec, Time.deltaTime);   //最小就是上1帧
-        for (int i = 0; i < action.keySequence.Length; i++)
+        for (int i = 0; i < action.keySequence.Count; i++)
         {
             int idx = 0;
             bool found = false;
@@ -165,7 +165,7 @@ public class InputToCommand : MonoBehaviour
             //策划作为地球人，可不知道delta是多少，每台电脑的delta都不一样，所以只能做这个补丁
             //当然也可以做成如果检查时间都不符合的情况下，所有的指令都看new，着看你需要咋样的手感了
             //我这里就用最后一个键可以访问new的
-            if (i == action.keySequence.Length - 1)
+            if (i == action.keySequence.Count - 1)
             {
                 for (int j = 0; j < _newInputs.Count; j++)
                 {

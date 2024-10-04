@@ -81,10 +81,10 @@ public class CharacterObj : MonoBehaviour
     public float moveSpeed;
 
     private bool WishToMoveForward =>
-        input.ActionOccur(new ActionCommand {keySequence = new KeyMap[] {KeyMap.Forward}});
+        input.ActionOccur(new ActionCommand {keySequence = new List<KeyMap> {KeyMap.Forward}});
 
     private bool WishToMoveBackward =>
-        input.ActionOccur(new ActionCommand {keySequence = new KeyMap[] {KeyMap.Backward}});
+        input.ActionOccur(new ActionCommand {keySequence = new List<KeyMap> {KeyMap.Backward}});
 
     /// <summary>
     /// 自然的移动，而非ForceMoved

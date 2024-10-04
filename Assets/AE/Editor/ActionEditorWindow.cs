@@ -21,8 +21,14 @@ public enum ViewType
     Tool = 1 << 4,
     Cancel = 1 << 5,
     BeCancel = 1 << 6,
-    Other = 1 << 7,
-    Frame = 1 << 8,
+    TempBeCancel = 1 << 7,
+    Command = 1 << 8,
+    MoveAcceptance = 1 << 9,
+    ActionAttackBox = 1 << 10,
+    ActionHitBox = 1 << 11,
+    Attack = 1 << 12,
+    Other = 1 << 13,
+    Frame = 1 << 14,
 }
 
 /// <summary>
@@ -34,6 +40,12 @@ public partial class ActionEditorSetting
     public int stateSelectIndex = -1;
     public int cancelSelectIndex = -1;
     public int beCancelSelectIndex = -1;
+    public int tempBeCancelSelectIndex = -1;
+    public int commandSelectIndex = -1;
+    public int moveAcceptanceSelectIndex = -1;
+    public int actionAttackBoxSelectIndex = -1;
+    public int actionHitBoxSelectIndex = -1;
+    public int attackInfoSelectIndex = -1;
     public int attackRangeSelectIndex = -1;
     public int bodyRangeSelectIndex = -1;
     public int actionSelectIndex = -1;
@@ -98,6 +110,18 @@ public partial class ActionEditorSetting
         [NonSerialized] public readonly CancelTagSetView cancelTagSetView;
         [NonSerialized] public readonly BeCancelledTagListView beCancelTagListView;
         [NonSerialized] public readonly BeCancelledTagSetView beCancelTagSetView;
+        [NonSerialized] public readonly TempBeCancelTagListView tempBeCancelTagListView;
+        [NonSerialized] public readonly TempBeCancelTagSetView tempBeCancelTagSetView;
+        [NonSerialized] public readonly CommandListView commandListView;
+        [NonSerialized] public readonly CommandSetView commandSetView;
+        [NonSerialized] public readonly AttackListView attackListView;
+        [NonSerialized] public readonly AttackSetView attackSetView;
+        [NonSerialized] public readonly ActionAttackBoxListView actionAttackBoxListView;
+        [NonSerialized] public readonly ActionAttackBoxSetView actionAttackBoxSetView;
+        [NonSerialized] public readonly ActionHitBoxListView actionHitBoxListView;
+        [NonSerialized] public readonly ActionHitBoxSetView actionHitBoxSetView;
+        [NonSerialized] public readonly MoveAcceptanceListView moveAcceptanceListView;
+        [NonSerialized] public readonly MoveAcceptanceSetView moveAcceptanceSetView;
         
         
         public List<IView> views { get; private set; }
@@ -120,6 +144,18 @@ public partial class ActionEditorSetting
         private readonly float cancelTagSetViewRectWidth = 200f;
         private readonly float beCancelTagListViewRectWidth = 200f;
         private readonly float beCancelTagSetViewRectWidth = 200f;
+        private readonly float tempBeCancelTagListViewRectWidth = 200f;
+        private readonly float tempBeCancelTagSetViewRectWidth = 200f;
+        private readonly float commandListRectWidth = 200f;
+        private readonly float commandSetViewRectWidth = 200f;
+        private readonly float attackListViewRectWidth = 200f;
+        private readonly float attackSetViewRectWidth = 250f;
+        private readonly float actionAttackBoxListViewRectWidth = 200f;
+        private readonly float actionAttackBoxSetViewRectWidth = 200f;
+        private readonly float actionHitBoxListViewRectWidth = 200f;
+        private readonly float actionHitBoxSetViewRectWidth = 250f;
+        private readonly float moveAcceptanceListViewRectWidth = 200f;
+        private readonly float moveAcceptanceSetViewRectWidth = 200f;
         
         #endregion style
         
@@ -186,7 +222,18 @@ public partial class ActionEditorSetting
             cancelTagSetView = CreateView<CancelTagSetView>();
             beCancelTagListView = CreateView<BeCancelledTagListView>();
             beCancelTagSetView = CreateView<BeCancelledTagSetView>();
-
+            tempBeCancelTagListView = CreateView<TempBeCancelTagListView>();
+            tempBeCancelTagSetView = CreateView<TempBeCancelTagSetView>();
+            commandListView = CreateView<CommandListView>();
+            commandSetView = CreateView<CommandSetView>();
+            attackListView = CreateView<AttackListView>();
+            attackSetView = CreateView<AttackSetView>();
+            actionAttackBoxListView = CreateView<ActionAttackBoxListView>();
+            actionAttackBoxSetView = CreateView<ActionAttackBoxSetView>();
+            actionHitBoxListView = CreateView<ActionHitBoxListView>();
+            actionHitBoxSetView = CreateView<ActionHitBoxSetView>();
+            moveAcceptanceListView = CreateView<MoveAcceptanceListView>();
+            moveAcceptanceSetView = CreateView<MoveAcceptanceSetView>();
         }
         
         private T CreateView<T>() where T : IView, new()
@@ -413,6 +460,127 @@ public partial class ActionEditorSetting
                 }
             }
         }
+        
+        public int commandSelectIndex
+        {
+            get
+            {
+                CheckSelectIndex(ref setting.commandSelectIndex, currentCommands);
+                return setting.commandSelectIndex;
+            }
+
+            set
+            {
+                int oldIndex = setting.commandSelectIndex;
+                setting.commandSelectIndex = value;
+                CheckSelectIndex(ref setting.commandSelectIndex, currentCommands);
+                if (oldIndex != value && oldIndex != setting.commandSelectIndex)
+                {//当前帧发生改变
+                    actionMachineDirty = true;
+                }
+            }
+        }
+        
+        public int moveAcceptanceSelectIndex
+        {
+            get
+            {
+                CheckSelectIndex(ref setting.moveAcceptanceSelectIndex, currentMoveAcceptances);
+                return setting.moveAcceptanceSelectIndex;
+            }
+
+            set
+            {
+                int oldIndex = setting.moveAcceptanceSelectIndex;
+                setting.moveAcceptanceSelectIndex = value;
+                CheckSelectIndex(ref setting.moveAcceptanceSelectIndex, currentMoveAcceptances);
+                if (oldIndex != value && oldIndex != setting.moveAcceptanceSelectIndex)
+                {//当前帧发生改变
+                    actionMachineDirty = true;
+                }
+            }
+        }
+        
+        public int attackInfoSelectIndex
+        {
+            get
+            {
+                CheckSelectIndex(ref setting.attackInfoSelectIndex, currentAttackInfos);
+                return setting.attackInfoSelectIndex;
+            }
+
+            set
+            {
+                int oldIndex = setting.attackInfoSelectIndex;
+                setting.attackInfoSelectIndex = value;
+                CheckSelectIndex(ref setting.attackInfoSelectIndex, currentAttackInfos);
+                if (oldIndex != value && oldIndex != setting.attackInfoSelectIndex)
+                {//当前帧发生改变
+                    actionMachineDirty = true;
+                }
+            }
+        }
+        
+        public int tempBeCancelTagSelectIndex
+        {
+            get
+            {
+                CheckSelectIndex(ref setting.tempBeCancelSelectIndex, currentTempBeCancels);
+                return setting.tempBeCancelSelectIndex;
+            }
+
+            set
+            {
+                int oldIndex = setting.tempBeCancelSelectIndex;
+                setting.tempBeCancelSelectIndex = value;
+                CheckSelectIndex(ref setting.tempBeCancelSelectIndex, currentTempBeCancels);
+                if (oldIndex != value && oldIndex != setting.tempBeCancelSelectIndex)
+                {//当前帧发生改变
+                    actionMachineDirty = true;
+                }
+            }
+        }
+        
+        public int actionAttackBoxSelectIndex
+        {
+            get
+            {
+                CheckSelectIndex(ref setting.actionAttackBoxSelectIndex, currentActionAttackBoxs);
+                return setting.actionAttackBoxSelectIndex;
+            }
+
+            set
+            {
+                int oldIndex = setting.actionAttackBoxSelectIndex;
+                setting.actionAttackBoxSelectIndex = value;
+                CheckSelectIndex(ref setting.actionAttackBoxSelectIndex, currentActionAttackBoxs);
+                if (oldIndex != value && oldIndex != setting.actionAttackBoxSelectIndex)
+                {//当前帧发生改变
+                    actionMachineDirty = true;
+                }
+            }
+        }
+        
+        public int actionHitBoxSelectIndex
+        {
+            get
+            {
+                CheckSelectIndex(ref setting.actionHitBoxSelectIndex, currentActionHitBoxs);
+                return setting.actionHitBoxSelectIndex;
+            }
+
+            set
+            {
+                int oldIndex = setting.actionHitBoxSelectIndex;
+                setting.actionHitBoxSelectIndex = value;
+                CheckSelectIndex(ref setting.actionHitBoxSelectIndex, currentActionHitBoxs);
+                if (oldIndex != value && oldIndex != setting.actionHitBoxSelectIndex)
+                {//当前帧发生改变
+                    actionMachineDirty = true;
+                }
+            }
+        }
+        
         public int stateSelectIndex
         {
             get
@@ -454,6 +622,16 @@ public partial class ActionEditorSetting
 
         public CancelTag currentCancelTag => GetSelectItem(cancelSelectIndex, currentCancels);
         public BeCancelledTag currentBeCancelTag => GetSelectItem(beCancelSelectIndex, currentBeCancels);
+        public TempBeCancelledTag currentTempBeCancelTag => GetSelectItem(tempBeCancelTagSelectIndex, currentTempBeCancels);
+        public ActionCommand currentCommand => GetSelectItem(commandSelectIndex, currentCommands);
+        public MoveInputAcceptance currentMoveInputAcceptance =>
+            GetSelectItem(moveAcceptanceSelectIndex, currentMoveAcceptances);
+        public AttackInfo currentAttackInfo => GetSelectItem(attackInfoSelectIndex, currentAttackInfos);
+
+        public AttackBoxTurnOnInfo currentActionAttackBox =>
+            GetSelectItem(actionAttackBoxSelectIndex, currentActionAttackBoxs);
+
+        public BeHitBoxTurnOnInfo currentActionHitBox => GetSelectItem(actionHitBoxSelectIndex, currentActionHitBoxs);
         public ActionInfo currentState => GetSelectItem(stateSelectIndex, currentStates);
         public FrameInfo currentFrame => GetSelectItem(frameSelectIndex, currentFrames);
         
@@ -461,6 +639,12 @@ public partial class ActionEditorSetting
 
         public List<CancelTag> currentCancels => currentState?.cancelTag;
         public List<BeCancelledTag> currentBeCancels => currentState?.beCancelledTag;
+        public List<TempBeCancelledTag> currentTempBeCancels => currentState?.tempBeCancelledTag;
+        public List<ActionCommand> currentCommands => currentState?.commands;
+        public List<MoveInputAcceptance> currentMoveAcceptances => currentState?.inputAcceptance;
+        public List<AttackInfo> currentAttackInfos => currentState?.attacks;
+        public List<AttackBoxTurnOnInfo> currentActionAttackBoxs => currentState?.attackPhase;
+        public List<BeHitBoxTurnOnInfo> currentActionHitBoxs => currentState?.defensePhase;
         public List<ActionInfo> currentStates => config?.data;
         
         #endregion index
@@ -612,7 +796,19 @@ public partial class ActionEditorSetting
             Rect cancelTagSetViewRect = Rect.zero;
             Rect beCancelTagListViewRect = Rect.zero;
             Rect beCancelTagSetViewRect = Rect.zero;
-            
+            Rect tempBeCancelTagListViewRect = Rect.zero;
+            Rect tempBeCancelTagSetViewRect = Rect.zero;
+            Rect commandListViewRect = Rect.zero;
+            Rect commandSetViewRect = Rect.zero;
+            Rect moveAcceptanceListViewRect = Rect.zero;
+            Rect moveAcceptanceSetViewRect = Rect.zero;
+            Rect attackListViewRect = Rect.zero;
+            Rect attackSetViewRect = Rect.zero;
+            Rect actionAttackBoxListViewRect = Rect.zero;
+            Rect actionAttackBoxSetViewRect = Rect.zero;
+            Rect actionHitBoxListViewRect = Rect.zero;
+            Rect actionHitBoxSetViewRect = Rect.zero;
+
             menuViewRect = new Rect(
                 startPosX + space,
                 startPosY + space,
@@ -714,6 +910,160 @@ public partial class ActionEditorSetting
 
             }
             
+            if ((setting.showView & ViewType.TempBeCancel) != 0)
+            {
+                if (!tempBeCancelTagListView.isPop)
+                {
+                    tempBeCancelTagListViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        tempBeCancelTagListViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += tempBeCancelTagListViewRectWidth;
+                    hasNextView = true;
+                }
+                
+                if (!tempBeCancelTagSetView.isPop)
+                {
+                    tempBeCancelTagSetViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        tempBeCancelTagListViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += tempBeCancelTagListViewRectWidth;
+                    hasNextView = true;
+                }
+
+            }
+            
+            if ((setting.showView & ViewType.Command) != 0)
+            {
+                if (!commandListView.isPop)
+                {
+                    commandListViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        commandListRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += commandListRectWidth;
+                    hasNextView = true;
+                }
+                
+                if (!commandSetView.isPop)
+                {
+                    commandSetViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        commandSetViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += commandSetViewRectWidth;
+                    hasNextView = true;
+                }
+
+            }
+            
+            if ((setting.showView & ViewType.MoveAcceptance) != 0)
+            {
+                if (!moveAcceptanceListView.isPop)
+                {
+                    moveAcceptanceListViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        moveAcceptanceListViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += moveAcceptanceListViewRectWidth;
+                    hasNextView = true;
+                }
+                
+                if (!moveAcceptanceSetView.isPop)
+                {
+                    moveAcceptanceSetViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        moveAcceptanceSetViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += moveAcceptanceSetViewRectWidth;
+                    hasNextView = true;
+                }
+
+            }
+            
+            if ((setting.showView & ViewType.Attack) != 0)
+            {
+                if (!attackListView.isPop)
+                {
+                    attackListViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        attackListViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += attackListViewRectWidth;
+                    hasNextView = true;
+                }
+                
+                if (!attackSetView.isPop)
+                {
+                    attackSetViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        attackSetViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += attackSetViewRectWidth;
+                    hasNextView = true;
+                }
+
+            }
+            
+            if ((setting.showView & ViewType.ActionAttackBox) != 0)
+            {
+                if (!actionAttackBoxListView.isPop)
+                {
+                    actionAttackBoxListViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        actionAttackBoxListViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += actionAttackBoxListViewRectWidth;
+                    hasNextView = true;
+                }
+                
+                if (!actionAttackBoxSetView.isPop)
+                {
+                    actionAttackBoxSetViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        actionAttackBoxSetViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += actionAttackBoxSetViewRectWidth;
+                    hasNextView = true;
+                }
+
+            }
+            if ((setting.showView & ViewType.ActionHitBox) != 0)
+            {
+                if (!actionHitBoxListView.isPop)
+                {
+                    actionHitBoxListViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        actionHitBoxListViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += actionHitBoxListViewRectWidth;
+                    hasNextView = true;
+                }
+                
+                if (!actionHitBoxSetView.isPop)
+                {
+                    actionHitBoxSetViewRect = new Rect(
+                        nextPosX + space,
+                        nextPosY + space,
+                        actionHitBoxSetViewRectWidth - space,
+                        itemHeight - space * 2);
+                    nextPosX += actionHitBoxSetViewRectWidth;
+                    hasNextView = true;
+                }
+
+            }
             
             #endregion calc size
 
@@ -770,6 +1120,91 @@ public partial class ActionEditorSetting
                         
                     }
                 }
+                
+                if ((setting.showView & ViewType.TempBeCancel) != 0)
+                {
+                    if (!tempBeCancelTagListView.isPop)
+                    {
+                        tempBeCancelTagListView.Draw(tempBeCancelTagListViewRect);
+                        
+                    }
+                    if (!tempBeCancelTagSetView.isPop)
+                    {
+                        tempBeCancelTagSetView.Draw(tempBeCancelTagSetViewRect);
+                        
+                    }
+                }
+                
+                if ((setting.showView & ViewType.Command) != 0)
+                {
+                    if (!commandListView.isPop)
+                    {
+                        commandListView.Draw(commandListViewRect);
+                        
+                    }
+                    if (!commandSetView.isPop)
+                    {
+                        commandSetView.Draw(commandSetViewRect);
+                        
+                    }
+                }
+                
+                if ((setting.showView & ViewType.MoveAcceptance) != 0)
+                {
+                    if (!moveAcceptanceListView.isPop)
+                    {
+                        moveAcceptanceListView.Draw(moveAcceptanceListViewRect);
+                        
+                    }
+                    if (!moveAcceptanceSetView.isPop)
+                    {
+                        moveAcceptanceSetView.Draw(moveAcceptanceSetViewRect);
+                        
+                    }
+                }
+                
+                if ((setting.showView & ViewType.Attack) != 0)
+                {
+                    if (!attackListView.isPop)
+                    {
+                        attackListView.Draw(attackListViewRect);
+                        
+                    }
+                    if (!attackSetView.isPop)
+                    {
+                        attackSetView.Draw(attackSetViewRect);
+                        
+                    }
+                }
+                
+                if ((setting.showView & ViewType.ActionAttackBox) != 0)
+                {
+                    if (!actionAttackBoxListView.isPop)
+                    {
+                        actionAttackBoxListView.Draw(actionAttackBoxListViewRect);
+                        
+                    }
+                    if (!actionAttackBoxSetView.isPop)
+                    {
+                        actionAttackBoxSetView.Draw(actionAttackBoxSetViewRect);
+                        
+                    }
+                }
+                
+                if ((setting.showView & ViewType.ActionHitBox) != 0)
+                {
+                    if (!actionHitBoxListView.isPop)
+                    {
+                        actionHitBoxListView.Draw(actionHitBoxListViewRect);
+                        
+                    }
+                    if (!actionHitBoxSetView.isPop)
+                    {
+                        actionHitBoxSetView.Draw(actionHitBoxSetViewRect);
+                        
+                    }
+                }
+                
                 GUI.EndScrollView();
             }
 

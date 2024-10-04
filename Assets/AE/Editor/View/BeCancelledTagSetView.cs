@@ -20,10 +20,10 @@ public class BeCancelledTagSetView : IView
         }
 
         scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
-        EditorGUILayoutEx.DrawObject("时间段", obj.percentageRange);
-        EditorGUILayoutEx.DrawObject("取消列表", obj.cancelTag);
-        EditorGUILayoutEx.DrawObject("融合出去时间", obj.fadeOutPercentage);
-        EditorGUILayoutEx.DrawObject("优先级", obj.priority);
+        obj.percentageRange = EditorGUILayoutEx.DrawObject("时间段", obj.percentageRange);
+        obj.cancelTag = EditorGUILayoutEx.DrawObject("取消列表", obj.cancelTag);
+        obj.fadeOutPercentage = EditorGUILayoutEx.DrawObject("融合出去时间", obj.fadeOutPercentage);
+        obj.priority = EditorGUILayoutEx.DrawObject("优先级", obj.priority);
         EditorGUILayout.EndScrollView();
     }
 

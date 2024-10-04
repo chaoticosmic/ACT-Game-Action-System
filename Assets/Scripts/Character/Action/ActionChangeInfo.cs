@@ -6,7 +6,7 @@ using UnityEngine;
 /// 通常在动作命中对方的时候，会得出双方的ActionChangeInfo，用来调整双方动作走向
 /// </summary>
 [Serializable]
-public struct ActionChangeInfo
+public class ActionChangeInfo
 {
     [Tooltip("动作变化方式")] public ActionChangeType changeType;
 

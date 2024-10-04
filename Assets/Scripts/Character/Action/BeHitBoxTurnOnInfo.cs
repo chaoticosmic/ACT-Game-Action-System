@@ -1,22 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// 开启一些受击盒子的信息
 /// 可以理解为“一部分防御”
 /// </summary>
 [Serializable]
-public struct BeHitBoxTurnOnInfo
+public class BeHitBoxTurnOnInfo
 {
     /// <summary>
     /// 开启的时间区域，可以分为多段时间开启
     /// </summary>
-    public PercentageRange[] inPercentage;
+    public List<PercentageRange> inPercentage = new();
     
     /// <summary>
     /// 要开启的盒子的tag
     /// </summary>
     /// <returns></returns>
-    public string[] tag;
+    public List<string> tag = new();
 
     /// <summary>
     /// 这样开启的盒子，优先级会发生怎样的临时变化
@@ -26,7 +27,7 @@ public struct BeHitBoxTurnOnInfo
     /// <summary>
     /// 如果命中了这里的受击框，就会临时开启一些tempBeCancelledTag，这里用id去索引
     /// </summary>
-    public string[] tempBeCancelledTagTurnOn;
+    public List<string> tempBeCancelledTagTurnOn = new();
     
     /// <summary>
     /// 与攻击框不同（是因为这个demo的游戏设计精度所决定的），受击框本身会决定这次受到攻击的时候双方的动作。

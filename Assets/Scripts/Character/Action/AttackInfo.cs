@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// 造成的伤害信息
 /// </summary>
 [Serializable]
-public struct AttackInfo
+public class AttackInfo
 {
     /// <summary>
     /// 一个伤害信息都会有一个phase，也就是证明他是第几段的
@@ -65,7 +66,7 @@ public struct AttackInfo
     /// <summary>
     /// 如果攻击命中了，就会临时开启一些tempBeCancelledTag，这里用id去索引
     /// </summary>
-    public string[] tempBeCancelledTagTurnOn;
+    public List<string> tempBeCancelledTagTurnOn = new();
 
 }
 
