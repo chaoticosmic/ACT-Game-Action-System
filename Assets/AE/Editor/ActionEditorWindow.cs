@@ -61,7 +61,7 @@ public partial class ActionEditorSetting
     public Vector2 otherViewScrollPos = Vector2.zero;
 
     public float frameWidth = 40;
-    public float frameListViewRectHeight = 200f;
+    public float frameListViewRectHeight = 400f;
 }
 
     public class ActionEditorWindow : EditorWindow
@@ -122,6 +122,7 @@ public partial class ActionEditorSetting
         [NonSerialized] public readonly ActionHitBoxSetView actionHitBoxSetView;
         [NonSerialized] public readonly MoveAcceptanceListView moveAcceptanceListView;
         [NonSerialized] public readonly MoveAcceptanceSetView moveAcceptanceSetView;
+        [NonSerialized] public readonly FrameListView frameListView;
         
         
         public List<IView> views { get; private set; }
@@ -156,6 +157,8 @@ public partial class ActionEditorSetting
         private readonly float actionHitBoxSetViewRectWidth = 250f;
         private readonly float moveAcceptanceListViewRectWidth = 200f;
         private readonly float moveAcceptanceSetViewRectWidth = 200f;
+        public float frameWidth => setting.frameWidth;
+        public float frameListViewRectHeight => setting.frameListViewRectHeight;
         
         #endregion style
         
@@ -234,6 +237,7 @@ public partial class ActionEditorSetting
             actionHitBoxSetView = CreateView<ActionHitBoxSetView>();
             moveAcceptanceListView = CreateView<MoveAcceptanceListView>();
             moveAcceptanceSetView = CreateView<MoveAcceptanceSetView>();
+            frameListView = CreateView<FrameListView>();
         }
         
         private T CreateView<T>() where T : IView, new()
@@ -634,8 +638,8 @@ public partial class ActionEditorSetting
         public BeHitBoxTurnOnInfo currentActionHitBox => GetSelectItem(actionHitBoxSelectIndex, currentActionHitBoxs);
         public ActionInfo currentState => GetSelectItem(stateSelectIndex, currentStates);
         public FrameInfo currentFrame => GetSelectItem(frameSelectIndex, currentFrames);
-        
-        public List<FrameInfo> currentFrames = new();
+
+        public List<FrameInfo> currentFrames => currentState?.frames;
 
         public List<CancelTag> currentCancels => currentState?.cancelTag;
         public List<BeCancelledTag> currentBeCancels => currentState?.beCancelledTag;
@@ -809,6 +813,7 @@ public partial class ActionEditorSetting
             Rect actionHitBoxListViewRect = Rect.zero;
             Rect actionHitBoxSetViewRect = Rect.zero;
 
+
             menuViewRect = new Rect(
                 startPosX + space,
                 startPosY + space,
@@ -827,6 +832,17 @@ public partial class ActionEditorSetting
                     height - space * 2);
                 startPosX += stateListViewRectWidth;
                 width -= stateListViewRectWidth;
+            }
+            
+            if ((setting.showView & ViewType.Frame) != 0 && !frameListView.isPop)
+            {
+                frameListViewRect = new Rect(
+                    startPosX + space,
+                    startPosY + space,
+                    width - space,
+                    frameListViewRectHeight - space);
+                startPosY += frameListViewRectHeight;
+                height -= frameListViewRectHeight;
             }
             
             
@@ -1070,6 +1086,12 @@ public partial class ActionEditorSetting
             #region draw
 
             menuView.Draw(menuViewRect);
+            
+            if ((setting.showView & ViewType.Frame) != 0 && !frameListView.isPop)
+            {
+                frameListViewRect.height += hasNextView ? 0 : (height - space);
+                frameListView.Draw(frameListViewRect);
+            }
             
             if ((setting.showView & ViewType.State) != 0 && !stateListView.isPop)
             {

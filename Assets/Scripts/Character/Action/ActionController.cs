@@ -98,15 +98,29 @@ public class ActionController : MonoBehaviour
     /// 但是因为要访问动画百分比的频率较高，不如就一次性了
     /// </summary>
     private float _pec = 0;
-    
+
+
+    private void OnEnable()
+    {
+        CharacterActionSystem.EnsureCreation();
+        CharacterActionSystem.RegisterController(this);
+    }
+
+    private void OnDisable()
+    {
+        CharacterActionSystem.UnRegisterController(this);
+    }
+
     /// <summary>
     /// 之所以我们都用Update而不是Fixed，因为我们要依赖的核心是Input和Animator
     /// 用Update做动作游戏会有很多问题，比如跳过了可以Cancel的帧
     /// 但是无奈，毕竟用了unity
+    /// 2024年10月6日 改为在CharacterActionSystem中更新
     /// </summary>
-    private void Update()
+    public void Tick(float delta)
     {
-        float delta = Time.deltaTime;
+        //去掉
+        //float delta = Time.deltaTime;
         //没有动画就不会工作
         if (AllActions.Count <= 0) return;
         

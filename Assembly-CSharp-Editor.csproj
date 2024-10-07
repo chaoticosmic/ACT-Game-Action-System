@@ -56,12 +56,14 @@
      <Compile Include="Assets\AE\Editor\View\TempBeCancelTagSetView.cs" />
      <Compile Include="Assets\AE\Editor\View\AttackListView.cs" />
      <Compile Include="Assets\AE\Editor\View\MoveAcceptanceListView.cs" />
+     <Compile Include="Assets\KinematicCharacterController\Examples\Scripts\Editor\PauseStateHandler.cs" />
      <Compile Include="Assets\AE\Editor\SceneGUIDrawer.cs" />
      <Compile Include="Assets\AE\Editor\View\ActionAttackBoxSetView.cs" />
      <Compile Include="Assets\AE\Editor\IDataView.cs" />
      <Compile Include="Assets\AE\Editor\View\ActionHitBoxSetView.cs" />
      <Compile Include="Assets\AE\Editor\View\CommandSetView.cs" />
      <Compile Include="Assets\AE\Editor\View\CancelTagSetView.cs" />
+     <Compile Include="Assets\KinematicCharacterController\Core\Editor\ReadOnlyPropertyDrawer.cs" />
      <Compile Include="Assets\AE\Editor\View\MenuView.cs" />
      <Compile Include="Assets\AE\Editor\View\CancelTagListView.cs" />
      <Compile Include="Assets\AE\Editor\View\ActionListView.cs" />
@@ -72,8 +74,11 @@
      <Compile Include="Assets\AE\Editor\View\TempBeCancelTagListView.cs" />
      <Compile Include="Assets\AE\Editor\View\BeCancelledTagSetView.cs" />
      <Compile Include="Assets\AE\Editor\View\StateListView.cs" />
+     <Compile Include="Assets\KinematicCharacterController\Core\Editor\KinematicCharacterMotorEditor.cs" />
      <Compile Include="Assets\AE\Editor\View\ToolView.cs" />
      <Compile Include="Assets\AE\Editor\ActionControllerTestEditor.cs" />
+     <Folder Include="Assets\KinematicCharacterController\Core\Editor" />
+     <Folder Include="Assets\KinematicCharacterController\Examples\Scripts\Editor" />
      <Folder Include="Assets\AE\Editor\View" />
      <Folder Include="Assets\AE\Editor" />
      <Reference Include="UnityEngine">

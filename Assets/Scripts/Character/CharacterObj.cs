@@ -15,6 +15,11 @@ public class CharacterObj : MonoBehaviour
     public InputToCommand input;
 
     /// <summary>
+    /// 人物控制
+    /// </summary>
+    public ActionCharacterController controller;
+
+    /// <summary>
     /// 重量，影响到下落速度，第一秒的时候下降weight，第1-2秒的时候下降就是2*weight了，以此类推
     /// 实际上动作游戏中是每帧增加一个重量，但是我们用的是Update，帧的概念是电影行业的，不是做游戏的
     /// 所以我们不得不拟合一个，按照每秒作为单位来用deltaTime做拟合

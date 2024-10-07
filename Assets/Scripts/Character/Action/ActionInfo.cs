@@ -146,6 +146,11 @@ public class ActionInfo
     /// 但实际上按住后再按kick和按kick本来就是两个动作了对吧，他们只是“大部分相似”而已
     /// </summary>
     public bool flip;
+
+    /// <summary>
+    /// 每帧数据
+    /// </summary>
+    public List<FrameInfo> frames = new();
 }
 
 /// <summary>

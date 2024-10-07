@@ -42,6 +42,8 @@ public class ToolView : IView
         msg += $"帧数:{win.currentFrames?.Count ?? 0}\n";
         
         AnimationClip clip = win.GetCurrentAnimationClip();
+
+        setting.frameCnt = 0;
         if (clip != null)
         {
             float animFrameRate = 1 / clip.frameRate;
@@ -49,6 +51,8 @@ public class ToolView : IView
             int animFrameCnt = Mathf.CeilToInt(animLength / animFrameRate);
 
             msg += $"动画:\n\t帧率:{animFrameRate:0.###}s\n\t长度:{animLength:0.###}s\n\t帧数:{animFrameCnt}\n";
+
+            setting.frameCnt = animFrameCnt;
         }
         EditorGUILayout.HelpBox(msg, UnityEditor.MessageType.None);
         
@@ -68,9 +72,9 @@ public class ToolView : IView
 
         GUILayout.Label("帧操作");
 
-        setting.frameCnt = EditorGUILayoutEx.DrawObject("帧数(N)", setting.frameCnt);
+        
 
-        if (GUILayout.Button("添加 N 帧到末尾"))
+        if (GUILayout.Button("添加 N 帧"))
         {
             GUI.FocusControl(null);
             AddFrameToEnd();
@@ -106,10 +110,10 @@ public class ToolView : IView
         // {
         //     CopyPrevFrame();
         // }
-        GUILayout.BeginHorizontal();
-        setting.fromIndex = EditorGUILayoutEx.DrawObject("开始", setting.fromIndex);
-        setting.toIndex = EditorGUILayoutEx.DrawObject("结束", setting.toIndex);
-        GUILayout.EndHorizontal();
+        // GUILayout.BeginHorizontal();
+        // setting.fromIndex = EditorGUILayoutEx.DrawObject("开始", setting.fromIndex);
+        // setting.toIndex = EditorGUILayoutEx.DrawObject("结束", setting.toIndex);
+        // GUILayout.EndHorizontal();
         // if (GUILayout.Button("粘贴范围"))
         // {
         //     PasteRangeFrame();
@@ -265,8 +269,8 @@ public class ToolView : IView
     
     private void AddFrameToEnd()
     {
-        List<RangeConfig> attackRanges = null;
-        List<RangeConfig> bodyRanges = null;
+        //List<RangeConfig> attackRanges = null;
+        //List<RangeConfig> bodyRanges = null;
 
         //if (win.frameSelectIndex >= 0)
         //{
@@ -274,7 +278,7 @@ public class ToolView : IView
             //attackRanges = setting.copyAttackRanges ? win.FindStayAttackRangeFromCurrent() : null;
             //bodyRanges = setting.copyBodyRanges ? win.FindStayBodyRangeFromCurrent() : null;
         //}
-
+        win.currentFrames.Clear();
         for (int i = 0; i < setting.frameCnt; i++)
         {
             win.currentFrames.Add(new FrameInfo());
